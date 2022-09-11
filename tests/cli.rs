@@ -25,9 +25,17 @@ fn directory_404() {
 
 #[test]
 fn no_files_in_directory() {
-    todo!();
+    let mut cmd = setup();
+    cmd.arg("empty");
+    cmd.assert()
+        .failure()
+        .stderr(predicate::str::contains("The provided directory has no files to select."));
 }
 
 fn file_selected() {
-    todo!();
+    let mut cmd = setup();
+    cmd.arg("withfiles");
+    cmd.assert()
+        .success()
+        .stdout(predicate::str::contains("The selected file was: "));
 }
