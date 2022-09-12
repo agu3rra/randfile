@@ -32,10 +32,11 @@ fn no_files_in_directory() {
         .stderr(predicate::str::contains("The provided directory has no files to select."));
 }
 
+#[test]
 fn file_selected() {
     let mut cmd = setup();
     cmd.arg("withfiles");
     cmd.assert()
         .success()
-        .stdout(predicate::str::contains("The selected file was: "));
+        .stdout(predicate::str::contains("File selected at random: "));
 }

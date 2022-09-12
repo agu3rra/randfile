@@ -12,7 +12,7 @@ readme = "readme.md"
 
 [dependencies]
 clap = { version="3", features=["derive", "cargo"] }
-rand = { version="0", features=["getrandom"] }
+rand = { version="0" }
 
 [dev-dependencies]
 assert_cmd = "2"
