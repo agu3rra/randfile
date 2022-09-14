@@ -26,7 +26,7 @@ fn directory_404() {
 #[test]
 fn no_files_in_directory() {
     let mut cmd = setup();
-    cmd.arg("empty");
+    cmd.arg("tests/emptyDir");
     cmd.assert()
         .failure()
         .stderr(predicate::str::contains("The provided directory has no files to select."));
@@ -35,7 +35,7 @@ fn no_files_in_directory() {
 #[test]
 fn file_selected() {
     let mut cmd = setup();
-    cmd.arg("withfiles");
+    cmd.arg("tests/withfiles");
     cmd.assert()
         .success()
         .stdout(predicate::str::contains("File selected at random: "));

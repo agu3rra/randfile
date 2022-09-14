@@ -10,7 +10,7 @@ struct Arguments{
 fn main() {
     let args = Arguments::parse();
     let directory: String = args.directory;
-    let paths: ReadDir = fs::read_dir(directory)
+    let paths: ReadDir = fs::read_dir(&directory)
         .expect("Error while reading the provided directory");
     let mut files: Vec<String> = Vec::new();
     // Traverse folder and identify files since we're not interested in directories.
@@ -22,6 +22,10 @@ fn main() {
             files.push(filename);
         }
     }
+    if files.len() == 0 {
+        panic!("The provided directory has no files to select.");
+    }
+    println!("Files identified in {}: {}", directory, files.len());
     let random_select: usize = rand::thread_rng().gen_range(0..files.len());
     println!("File selected at random: {}", files[random_select]);
 }
