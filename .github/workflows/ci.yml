@@ -1,8 +1,6 @@
-name: Rust
+name: Continuous Integration
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -25,5 +23,5 @@ jobs:
     - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
     - name: Build
       run: cargo build --verbose
-    - name: Run tests
+    - name: Run Publish
       run: cargo test --verbose
