@@ -23,5 +23,5 @@ jobs:
     - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
     - name: Build
       run: cargo build --verbose
-    - name: Run Publish
+    - name: Test
       run: cargo test --verbose
