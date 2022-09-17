@@ -1,8 +1,8 @@
 name: Release
 
 on:
-  push:
-    branches: [ "initial.release" ]
+  release:
+    types: [created]
 
 env:
   CARGO_TERM_COLOR: always
