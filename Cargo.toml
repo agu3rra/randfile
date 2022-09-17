@@ -17,3 +17,9 @@ rand = { version="0" }
 [dev-dependencies]
 assert_cmd = "2"
 predicates = "2"
+
+[profile.release]
+strip = true  # Strips symbols from the binary to reduce size.
+opt-level = 's'  # Optimize for size as this is not a complex program.
+lto = true  # Enable link time optimization at the expense of longer linking
+codegen-units = 1  # Max size reduction optimizations; longer compile times
