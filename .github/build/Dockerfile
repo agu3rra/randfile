@@ -3,7 +3,9 @@ FROM rust:latest as prepare
 COPY . /app
 WORKDIR /app
 
-RUN apt-get update && apt-get upgrade -y
+# Install Curl
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y curl
 
 # Linux requirements
 RUN echo "Yay, Linux needs nothing more than just Rust! \o/" 
@@ -15,7 +17,7 @@ RUN rustup toolchain install stable-x86_64-pc-windows-gnu --force-non-host
 
 # Building in-progress...
 RUN echo "Building in-progress..."
-#RUN cargo build --release --target linuxhere
+RUN cargo build --release --target x86_64-unknown-linux-musl
 RUN cargo build --release --target x86_64-pc-windows-gnu
 
 # macOS requirements
